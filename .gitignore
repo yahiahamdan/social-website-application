@@ -1,6 +1,8 @@
 env
 socialApp.txt
 specificInformation.txt
+*.pyc
+bookmarks/bookmarks/db.sqlite3
 # Django #
 *.log
 *.pot
@@ -8,6 +10,7 @@ specificInformation.txt
 __pycache__
 db.sqlite3
 media
+
 
 # Backup files # 
 *.bak 
