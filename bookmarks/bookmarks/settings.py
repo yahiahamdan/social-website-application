@@ -19,6 +19,11 @@ LOGIN_REDIRECT_URL = 'account:dashboard'
 LOGIN_URL = 'account:login'
 LOGOUT_URL = 'account:logout'
 #LOGOUT_REDIRECT_URL ='account:login'
+import os
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
+
+#Pillow support muliple image formats image functions 
 
 
 # Quick-start development settings - unsuitable for production
