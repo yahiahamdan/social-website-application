@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate,login
 from .forms import loginForm
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm,UserEditForm,ProfileEditForm
 from .models import Profile
+from django.contrib import messages
 """
 login-required decorator of the authentication framework 
 check lw current user dh authenticated it executes the decorater view 
@@ -61,13 +62,16 @@ def edit(request):
                              data=request.POST)
        profile_form=ProfileEditForm(
            instance=request.user.profile,
-           data=request.Post,
+           data=request.POST,
            files=request.FILES
                         )
        if user_form.is_valid() and profile_form.is_valid():
            user_form.save()
            profile_form.save()
+           messages.success(request, 'Profile updated successfully')
+           return redirect('account:dashboard')
     else:
+           messages.error(request, 'Error updating your profile')   
            user_form=UserEditForm(instance=request.user)
            profile_form=ProfileEditForm(instance=request.user.profile)
     return render(request,'account/edit.html',{'user_form':user_form,'profile_form':profile_form})
