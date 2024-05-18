@@ -52,7 +52,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'hamdanyahia2@gmail.com'  # Your Gmail address
 EMAIL_HOST_PASSWORD = 'uhap mwco ytig vxun'
-
+DEFAULT_FROM_EMAIL = 'hamdanyahia2@gmail.com'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
