@@ -30,6 +30,13 @@ class UserEditForm(forms.ModelForm):
      class Meta:
          model=User
          fields=['first_name','last_name','email']
+     def clean_email(self):
+        data = self.cleaned_data["email"]
+        qs=User.objects.filter(email=data).exclude(id=self.instance.id)
+        if qs.exists():
+            raise forms.ValidationError("Email is already in use")
+        return data
+    
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model=Profile
