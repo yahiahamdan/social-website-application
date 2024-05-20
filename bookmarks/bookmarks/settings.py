@@ -35,7 +35,7 @@ SECRET_KEY = 'django-insecure-zkmasw7n5978d%=p0i_5mbi%8=&52w6aop_q(gfo)wx$$c6li_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['myapp.com','localhost','127.0.0.1']
 
 
 # Application definition
@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
       'django.contrib.admin',
+      'social_django',
+      'django_extensions',
 ]
 #ay 7aga to resolve the conflict
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
