@@ -11,6 +11,9 @@ bookmarks/bookmarks/db.sqlite3
 __pycache__
 db.sqlite3
 media
+cert.crt
+cert.key
+chapterone.txt
 
 
 # Backup files # 
