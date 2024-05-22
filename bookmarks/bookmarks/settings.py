@@ -51,6 +51,7 @@ INSTALLED_APPS = [
       'django.contrib.admin',
       'social_django',
       'django_extensions',
+      'images.apps.ImagesConfig',
       
       ]
 #ay 7aga to resolve the conflict
@@ -74,8 +75,22 @@ MIDDLEWARE = [
 AUTHENTICATION_BACKENDS = [
 'social_core.backends.google.GoogleOAuth2',
 'django.contrib.auth.backends.ModelBackend',
-# 'account.authentication.EmailAuthBackend',
+#'account.authentication.EmailAuthBackend',
 ]
+
+SOCIAL_AUTH_PIPELINE = [
+ 'social_core.pipeline.social_auth.social_details',
+ 'social_core.pipeline.social_auth.social_uid',
+ 'social_core.pipeline.social_auth.auth_allowed',
+ 'social_core.pipeline.social_auth.social_user',
+ 'social_core.pipeline.user.get_username',
+ 'social_core.pipeline.user.create_user',
+ 'social_core.pipeline.social_auth.associate_user',
+ 'social_core.pipeline.social_auth.load_extra_data',
+ 'social_core.pipeline.user.user_details',
+]
+
+
 import environs
 import os 
 env = environs.Env()
