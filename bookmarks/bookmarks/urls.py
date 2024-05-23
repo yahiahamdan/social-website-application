@@ -24,6 +24,7 @@ urlpatterns = [
     path('account/',include('account.urls',namespace='account')),
     path('account/',include('django.contrib.auth.urls')),
     path('social_auth/',include('social_django.urls',namespace='social')),
+   path('images/', include('images.urls', namespace='images')),
 ]
 if settings.DEBUG:
  urlpatterns += static(settings.MEDIA_URL,
