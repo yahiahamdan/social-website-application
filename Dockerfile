@@ -12,23 +12,19 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     libpq-dev
 
-COPY  requirements.txt /app/
+COPY  bookmarks/requirements.txt /app/
 
+COPY .env  /app/
 
 # Print Python and pip versions for debugging
 RUN python --version && pip --version
-
-# Print the contents of requirements.txt for debugging
-RUN cat /app/requirements.txt
-
-
 
 
 #install any needed pacakges speicief in requirments.txt
 RUN pip install --no-cache-dir -r requirements.txt --verbose 
 
 #copy the current directory contents into the container at /app
-COPY . /app/
+COPY . /app
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -37,5 +33,7 @@ ENV PYTHONUNBUFFERED 1
 EXPOSE 8000
 
 #run the command
-CMD ["python", "manage.py", "runserver","0.0.0.0:8000"]
+#set the working directory
+WORKDIR /app/bookmarks
+CMD ["python", "manage.py", "runserver"]
 
